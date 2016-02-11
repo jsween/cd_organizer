@@ -9,5 +9,23 @@
         <div id="header">
             <h1>My Music Collection</h1>
         </div>
+        <div id="wrapper">
+            {% if cd_book is not empty %}
+                <div id="search">
+                    <h2>Search:</h2>
+                </div>
+                <div id="collection">
+                    <h3>My Collection</h3>
+                </div>
+            {% else %}
+                <div id="noResults">
+                    <h3>Lets Add Some Music</h3>
+                    <form class="btn" action="/enter_music" method="get">
+                        <button type="submit" >Add Music</button>
+                    </form>
+                </div>
+            {% endif %}
+
+        </div>
     </body>
 </html>

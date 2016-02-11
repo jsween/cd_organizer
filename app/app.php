@@ -11,13 +11,18 @@
     if(empty($_SESSION['matching_cds'])) {
         $_SESSION['matching_cds'] = array();
     }
-    
+
     $app = new Silex\Application();
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array( 'twig.path' => __DIR__.'/../views'));
     /**Home**/
     $app->get("/", function() use($app) {
-        return $app['twig']->render('cds.html.twig', array('cds'=>CD::getAll()));
+        $cd_book = $_SESSION['list_of_cds'];
+        return $app['twig']->render('cds.html.twig', array('cds' => CD::getAll()));
+    });
+    /**Enter CD webpage**/
+    $app->get("/enter_music", function() use($app) {
+        return $app['twig']->render('enter_music.twig.html');
     });
     /**Add New CD**/
     $app->post("/add", function() use($app) {
