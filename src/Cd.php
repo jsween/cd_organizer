@@ -1,5 +1,5 @@
 <?php
-class CD
+class Cd
 {
     /****Properties****/
     private $artist;
@@ -14,7 +14,7 @@ class CD
         $this->artist = (string) $new_artist;
     }
     /****Getters****/
-    function getTitle()
+    function getArtist()
     {
         return $this->artist;
     }

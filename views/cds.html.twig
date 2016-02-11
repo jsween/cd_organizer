@@ -10,22 +10,32 @@
             <h1>My Music Collection</h1>
         </div>
         <div id="wrapper">
-            {% if cd_book is not empty %}
+            {% if cds is not empty %}
                 <div id="search">
                     <h2>Search:</h2>
                 </div>
                 <div id="collection">
                     <h3>My Collection</h3>
+                    <ul>
+                        {%for cd in cds %}
+                            <li>{{ cd.artist }}</li>
+                        {% endfor %}
+                    </ul>
                 </div>
             {% else %}
                 <div id="noResults">
+                    <h1>Welcome Message</h1>
+                </div>
+            {% endif %}
+                <div id="Add Music">
                     <h3>Lets Add Some Music</h3>
                     <form class="btn" action="/enter_music" method="get">
                         <button type="submit" >Add Music</button>
                     </form>
                 </div>
-            {% endif %}
-
+            <form class="btn" action="/delete_cds" method="post">
+                <button type="submit" >Clear Library</button>
+            </form>
         </div>
     </body>
 </html>

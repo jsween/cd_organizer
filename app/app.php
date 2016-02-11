@@ -17,8 +17,7 @@
     $app->register(new Silex\Provider\TwigServiceProvider(), array( 'twig.path' => __DIR__.'/../views'));
     /**Home**/
     $app->get("/", function() use($app) {
-        $cd_book = $_SESSION['list_of_cds'];
-        return $app['twig']->render('cds.html.twig', array('cds' => CD::getAll()));
+        return $app['twig']->render('cds.html.twig', array('cds' => Cd::getAll()));
     });
     /**Enter CD webpage**/
     $app->get("/enter_music", function() use($app) {
@@ -26,9 +25,9 @@
     });
     /**Add New CD**/
     $app->post("/add", function() use($app) {
-        $cd = new CD($_POST['artist']);
+        $cd = new Cd($_POST['artist']);
         $cd->save();
-        return $app['twig']->render('add_cd.html.twig', array('newcd' => $cd));
+        return $app['twig']->render('review_cd.html.twig', array('newcd' => $cd));
     });
     /**View Search**/
     $app->get("/results", function() use($app) {
@@ -37,7 +36,7 @@
     });
     /**Delete CDs**/
     $app->post("/delete_cds", function() use($app) {
-        CD::deleteAll();
+        Cd::deleteAll();
         return $app['twig']->render('delete_cds.html.twig');
     });
 
