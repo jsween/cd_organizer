@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    color: #333333;
+    font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+}
+
+#header {
+    text-align: center;
+    font-size: 1.5em;
+    background-color: #099;
+    border-bottom: 30px solid #333;
+}
+
+#header h1 {
+    padding: 70px 0;
+    color: #FA0;
+}
