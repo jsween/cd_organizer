@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/styles.css" media="all">
+        <meta charset="utf-8">
+        <title>Music Collection</title>
+    </head>
+    <body>
+        <div id="header">
+            <h1>Your Results:</h1>
+        </div>
+        <div id="wrapper">
+                <div id="results">
+                    {% if matching_cds is not empty %}
+                        {% for cd in matching_cds %}
+                            <h4>{{ cd.getArtist }}</h4>
+                            <p>- {{ cd.album_name }} -</p>
+                            <p>- {{ cd.year }} -</p>
+                        {% endfor %}
+                    {% else %}
+                        <h1>NO RESULTS!</h1>
+                    {% endif %}
+                    <a href="/">Home</a>
+                </div>
+        </div>
+    </body>
+</html>

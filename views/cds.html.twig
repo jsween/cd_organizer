@@ -23,6 +23,13 @@
         {% if cds is not empty %}
             <div id="search">
                 <h2>Search:</h2>
+                <form action="/results" method="get">
+                    <div class="form-group">
+                        <label for="user_artist">Search by Artist Name:</label>
+                        <input id="user_artist" name="user_artist" class="form-control" type="text">
+                    </div>
+                    <button type="submit" class="btn-success">Search</button>
+                </form>
             </div>
             <div id="collection">
                 <h3>My Collection</h3>

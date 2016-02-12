@@ -31,8 +31,16 @@
     });
     /**View Search**/
     $app->get("/results", function() use($app) {
-        $user_artist = ($_GET['user_artist']);
-        return;
+        $user_artist = strtolower($_GET['user_artist']);
+        $cds = $_SESSION['list_of_cds'];
+        $cds_match = $_SESSION['matching_cds'];
+        foreach ($cds as $cd) {
+            if($user_artist == strtolower($cd->getArtist())) {
+                array_push($cds_match, $cd);
+            }
+        }
+        var_dump($cds_match);
+        return $app['twig']->render('search_results.html.twig', array('matching_cds' => $cds_match));
     });
     /**Delete CDs**/
     $app->post("/delete_cds", function() use($app) {
