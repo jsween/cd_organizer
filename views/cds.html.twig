@@ -10,36 +10,38 @@
             <h1>My Music Collection</h1>
         </div>
         <div id="wrapper">
-            {% if cds is not empty %}
-                <div id="search">
-                    <h2>Search:</h2>
-                </div>
-                <div id="collection">
-                    <h3>My Collection</h3>
-                    <ul>
-                        {%for cd in cds %}
-                            <h2>{{ cd.artist }}</h2>
-                            <p>- {{ cd.album_name }} -</p>
-                            <p>- {{ cd.year }} -</p>
-                            <img src="{{ cd.cover_art }}" alt="{{ cd.album_name }}" />
-                            <br>
-                        {% endfor %}
-                    </ul>
-                </div>
-            {% else %}
-                <div id="noResults">
-                    <h1>Welcome Message</h1>
-                </div>
-            {% endif %}
-                <div id="Add Music">
-                    <h3>Lets Add Some Music</h3>
-                    <form class="btn" action="/enter_music" method="get">
-                        <button type="submit" >Add Music</button>
-                    </form>
-                </div>
+            <div id="addMusic">
+                <h3>Lets Add Some Music</h3>
+                <form class="btn" action="/enter_music" method="get">
+                    <button type="submit" >Add Music</button>
+                </form>
+            </div>
             <form class="btn" action="/delete_cds" method="post">
                 <button type="submit" >Clear Library</button>
             </form>
         </div>
+        {% if cds is not empty %}
+            <div id="search">
+                <h2>Search:</h2>
+            </div>
+            <div id="collection">
+                <h3>My Collection</h3>
+                <ul>
+                    {%for cd in cds %}
+                    <div class="cds">
+                        <h2>{{ cd.artist }}</h2>
+                        <p>- {{ cd.album_name }} -</p>
+                        <p>- {{ cd.year }} -</p>
+                        <img src="{{ cd.cover_art }}" alt="{{ cd.album_name }}" />
+                        <br>
+                    </div>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% else %}
+            <div id="noResults">
+                <h1>Welcome Message</h1>
+            </div>
+        {% endif %}
     </body>
 </html>
