@@ -25,7 +25,7 @@
     });
     /**Add New CD**/
     $app->post("/add", function() use($app) {
-        $cd = new Cd($_POST['artist']);
+        $cd = new Cd($_POST['artist'], $_POST['album_name'], $_POST['year'], $_POST['cover_art']);
         $cd->save();
         return $app['twig']->render('review_cd.html.twig', array('newcd' => $cd));
     });

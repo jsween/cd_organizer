@@ -18,7 +18,11 @@
                     <h3>My Collection</h3>
                     <ul>
                         {%for cd in cds %}
-                            <li>{{ cd.artist }}</li>
+                            <h2>{{ cd.artist }}</h2>
+                            <p>- {{ cd.album_name }} -</p>
+                            <p>- {{ cd.year }} -</p>
+                            <img src="{{ cd.cover_art }}" alt="{{ cd.album_name }}" />
+                            <br>
                         {% endfor %}
                     </ul>
                 </div>
